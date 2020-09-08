@@ -16,8 +16,26 @@ type Passport struct {
 	PublicKey     string `json:"public_key"`
 }
 
-// LoadPassportFile tries to parse passport file stored in given location.
-func LoadPassportFile(location string) (*Passport, error) {
+// GetPassportCredentialHelper returns credential helper using
+func GetPassportCredentialHelper(location string) (*Passport, error) {
+	var err error
+	if location == "" {
+		location, err = getDefaultPassportLocation()
+	}
+
+	if err != nil {
+		return nil, err
+	}
+
+	passport, err := loadPassportFile(location)
+	if err != nil {
+		return nil, err
+	}
+
+	return passport, nil
+}
+
+func loadPassportFile(location string) (*Passport, error) {
 	file, err := os.Open(location)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open passport file: %w", err)
