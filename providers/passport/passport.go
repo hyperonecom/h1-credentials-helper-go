@@ -7,7 +7,7 @@ import (
 
 // AuthProvider is used to provide JWT auth using data from passport file
 type AuthProvider struct {
-	signer *jwt.TokenSigner
+	signer *jwt.RSA256Signer
 }
 
 // GetPassportCredentialHelper returns credential helper using passport file
@@ -26,7 +26,7 @@ func GetPassportCredentialHelper(location string) (*providers.JWTAuthProvider, e
 		return nil, err
 	}
 
-	signer := jwt.TokenSigner{PrivateKey: passport.PrivateKey, KeyID: passport.CertificateID, Issuer: passport.Issuer, Subject: passport.SubjectID}
+	signer := jwt.RSA256Signer{PrivateKey: passport.PrivateKey, KeyID: passport.CertificateID, Issuer: passport.Issuer, Subject: passport.SubjectID}
 
 	provider := AuthProvider{file: *passport}
 

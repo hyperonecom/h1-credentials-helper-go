@@ -11,8 +11,8 @@ import (
 	"gopkg.in/square/go-jose.v2/jwt"
 )
 
-// TokenSigner is used for creating JWT
-type TokenSigner struct {
+// RSA256Signer is used for creating JWT using asymmetric keys
+type RSA256Signer struct {
 	PrivateKey string
 	KeyID      string
 	Issuer     string
@@ -20,7 +20,7 @@ type TokenSigner struct {
 }
 
 // GetJWT creates token for given audience
-func (input *TokenSigner) GetJWT(audience string) (string, error) {
+func (input *RSA256Signer) GetJWT(audience string) (string, error) {
 	signer, err := getRSASigner(input.PrivateKey, input.KeyID)
 	if err != nil {
 		return "", err
