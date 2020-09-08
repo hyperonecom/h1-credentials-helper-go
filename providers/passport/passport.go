@@ -5,6 +5,8 @@ import (
 	"errors"
 	"fmt"
 	"os"
+
+	"github.com/kuskoman/h1-credential-helper-go/providers"
 )
 
 // Passport contains data used for authenticating user or service account
@@ -17,7 +19,7 @@ type Passport struct {
 }
 
 // GetPassportCredentialHelper returns credential helper using
-func GetPassportCredentialHelper(location string) (*Passport, error) {
+func GetPassportCredentialHelper(location string) (*providers.JWTAuthProvider, error) {
 	var err error
 	if location == "" {
 		location, err = getDefaultPassportLocation()
