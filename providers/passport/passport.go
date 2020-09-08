@@ -10,8 +10,8 @@ type AuthProvider struct {
 	signer *jwt.RSA256Signer
 }
 
-// GetPassportCredentialHelper returns credential helper using passport file
-func GetPassportCredentialHelper(location string) (*providers.JWTAuthProvider, error) {
+// GetCredentialHelper returns credential helper using passport file
+func GetCredentialHelper(location string) (providers.JWTAuthProvider, error) {
 	var err error
 	if location == "" {
 		location, err = getDefaultPassportLocation()
@@ -26,11 +26,11 @@ func GetPassportCredentialHelper(location string) (*providers.JWTAuthProvider, e
 		return nil, err
 	}
 
-	signer := jwt.RSA256Signer{PrivateKey: passport.PrivateKey, KeyID: passport.CertificateID, Issuer: passport.Issuer, Subject: passport.SubjectID}
+	signer := &jwt.RSA256Signer{PrivateKey: passport.PrivateKey, KeyID: passport.CertificateID, Issuer: passport.Issuer, Subject: passport.SubjectID}
 
-	provider := AuthProvider{file: *passport}
+	provider := AuthProvider{signer: signer}
 
-	return provider, nil
+	return &provider, nil
 }
 
 // GetJWT returns token used for signing requests
