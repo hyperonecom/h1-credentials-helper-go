@@ -1,6 +1,6 @@
 package providers
 
-// JWTAuthProvider allows to get request signed using generated JWT
-type JWTAuthProvider interface {
-	GetJWT(audience string) (string, error)
+// TokenAuthProvider allows to get request signed using generated JWT
+type TokenAuthProvider interface {
+	GetToken(audience string) (string, error)
 }

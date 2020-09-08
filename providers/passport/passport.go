@@ -10,8 +10,8 @@ type AuthProvider struct {
 	signer *jwt.RSA256Signer
 }
 
-// GetCredentialHelper returns credential helper using passport file
-func GetCredentialHelper(location string) (providers.JWTAuthProvider, error) {
+// GetCredentialsHelper returns credential helper using passport file
+func GetCredentialsHelper(location string) (providers.TokenAuthProvider, error) {
 	var err error
 	if location == "" {
 		location, err = getDefaultPassportLocation()
@@ -33,7 +33,7 @@ func GetCredentialHelper(location string) (providers.JWTAuthProvider, error) {
 	return &provider, nil
 }
 
-// GetJWT returns token used for signing requests
-func (provider AuthProvider) GetJWT(audience string) (string, error) {
+// GetToken returns token used for signing requests
+func (provider AuthProvider) GetToken(audience string) (string, error) {
 	return provider.signer.GetJWT(audience)
 }
