@@ -4,7 +4,6 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/pem"
-	"errors"
 	"fmt"
 	"time"
 
@@ -16,21 +15,12 @@ import (
 type TokenSigner struct {
 	PrivateKey string
 	KeyID      string
-	Audience   string
 	Issuer     string
 	Subject    string
 }
 
-// GetJWT creates token for given or default audience
+// GetJWT creates token for given audience
 func (input *TokenSigner) GetJWT(audience string) (string, error) {
-	if audience == "" {
-		if input.Audience != "" {
-			audience = input.Audience
-		} else {
-			return "", errors.New("audience is not given and default audience is missing")
-		}
-	}
-
 	signer, err := getRSASigner(input.PrivateKey, input.KeyID)
 	if err != nil {
 		return "", err
