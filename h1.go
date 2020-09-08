@@ -1,8 +1,8 @@
 package h1
 
 import (
-	"github.com/kuskoman/h1-credential-helper-go/providers"
-	"github.com/kuskoman/h1-credential-helper-go/providers/passport"
+	"github.com/kuskoman/h1-credentials-helper-go/providers"
+	"github.com/kuskoman/h1-credentials-helper-go/providers/passport"
 )
 
 // GetPassportCredentialsHelper creates credentials helper using HyperOne passport file

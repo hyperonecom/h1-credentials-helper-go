@@ -1,4 +1,4 @@
-module github.com/kuskoman/h1-credential-helper-go
+module github.com/kuskoman/h1-credentials-helper-go
 
 go 1.14
 
