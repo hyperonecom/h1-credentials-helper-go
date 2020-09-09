@@ -34,6 +34,6 @@ func GetCredentialsHelper(location string) (providers.TokenAuthProvider, error) 
 }
 
 // GetToken returns token used for signing requests
-func (provider AuthProvider) GetToken(audience string) (string, error) {
+func (provider *AuthProvider) GetToken(audience string) (string, error) {
 	return provider.signer.GetJWT(audience)
 }
