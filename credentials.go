@@ -1,4 +1,4 @@
-package h1
+package credentials
 
 import (
 	"github.com/kuskoman/h1-credentials-helper-go/providers"

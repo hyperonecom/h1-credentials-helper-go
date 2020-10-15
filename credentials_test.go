@@ -1,4 +1,4 @@
-package h1
+package credentials
 
 import (
 	"testing"
