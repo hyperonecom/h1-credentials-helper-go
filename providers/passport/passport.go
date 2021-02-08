@@ -1,8 +1,8 @@
 package passport
 
 import (
-	"github.com/kuskoman/h1-credentials-helper-go/auth/jwt"
-	"github.com/kuskoman/h1-credentials-helper-go/providers"
+	"github.com/hyperonecom/h1-credentials-helper-go/auth/jwt"
+	"github.com/hyperonecom/h1-credentials-helper-go/providers"
 )
 
 // AuthProvider is used to provide JWT auth using data from passport file

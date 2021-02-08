@@ -15,7 +15,7 @@ package main
 import (
     "log"
 
-    "github.com/kuskoman/h1-credentials-helper-go"
+    "github.com/hyperonecom/h1-credentials-helper-go"
 )
 
 func main() {
