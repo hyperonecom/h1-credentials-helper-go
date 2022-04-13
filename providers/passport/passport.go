@@ -1,6 +1,8 @@
 package passport
 
 import (
+	"os"
+
 	"github.com/hyperonecom/h1-credentials-helper-go/auth/jwt"
 	"github.com/hyperonecom/h1-credentials-helper-go/providers"
 )
@@ -13,6 +15,11 @@ type AuthProvider struct {
 // GetCredentialsHelper returns credential helper using passport file
 func GetCredentialsHelper(location string) (providers.TokenAuthProvider, error) {
 	var err error
+
+	if location == "" {
+		location = os.Getenv("HYPERONE_PASSPORT_FILE")
+	}
+
 	if location == "" {
 		location, err = getDefaultPassportLocation()
 	}
